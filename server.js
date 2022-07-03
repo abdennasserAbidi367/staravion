@@ -162,13 +162,13 @@ async function deleteFlightById(client, req, res) {
 
     if (cursor.deletedCount === 1) {
       console.log("Successfully deleted one document.");
-      return result.send({ message: 'Successfully deleted one document.' });
+      return res.send({ message: 'Successfully deleted one document.' });
     } else {
       console.log("No documents matched the query. Deleted 0 documents.");
-      return result.send({ message: 'No documents matched the query. Deleted 0 documents.' });
+      return res.send({ message: 'No documents matched the query. Deleted 0 documents.' });
     }
   } catch {
-    return result.send({ message: 'fbaebfgfhagfjafafafe' });
+    return res.send({ message: 'fbaebfgfhagfjafafafe' });
   }
 }
 
