@@ -158,7 +158,7 @@ async function deleteFlightById(client, req, res) {
     .collection('tech')
     .deleteOne(query);
 
-    if (result.deletedCount === 1) {
+    if (cursor.deletedCount === 1) {
       console.log("Successfully deleted one document.");
       return result.send({ message: 'Successfully deleted one document.' });
     } else {
