@@ -153,7 +153,8 @@ async function listFlightById(client, req, res) {
 async function deleteFlightById(client, req, res) {
   var query = { id: req.body.id,};
   //var query = { email: "a@a.a", password: "" };
-  const cursor = client
+  try {
+    const cursor = client
     .db('tunisavia')
     .collection('tech')
     .deleteOne(query);
@@ -165,6 +166,9 @@ async function deleteFlightById(client, req, res) {
       console.log("No documents matched the query. Deleted 0 documents.");
       return result.send({ message: 'No documents matched the query. Deleted 0 documents.' });
     }
+  } catch {
+    await client.close();
+  }
 }
 
 
