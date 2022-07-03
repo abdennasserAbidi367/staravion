@@ -168,7 +168,7 @@ async function deleteFlightById(client, req, res) {
       return result.send({ message: 'No documents matched the query. Deleted 0 documents.' });
     }
   } catch {
-    
+    return result.send({ message: 'fbaebfgfhagfjafafafe' });
   }
 }
 
