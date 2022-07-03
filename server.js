@@ -81,6 +81,11 @@ app.post('/getFlightById', urlencodedParser, function(req, res) {
   listFlightById(client, req, res);
 });
 
+app.post('/deleteFlightById', urlencodedParser, function(req, res) {
+  console.log(req.body.id);
+  deleteFlightById(client, req, res);
+});
+
 app.post('/save', function(req, res) {
   addUser(client, req, res);
 });
@@ -144,6 +149,25 @@ async function listFlightById(client, req, res) {
   console.log(`${results}:`);
   return res.send({ results })
 }
+
+async function deleteFlightById(client, req, res) {
+  var query = { id: req.body.id,};
+  //var query = { email: "a@a.a", password: "" };
+  const cursor = client
+    .db('tunisavia')
+    .collection('tech')
+    .deleteOne(query);
+
+    if (result.deletedCount === 1) {
+      console.log("Successfully deleted one document.");
+      return result.send({ message: 'Successfully deleted one document.' });
+    } else {
+      console.log("No documents matched the query. Deleted 0 documents.");
+      return result.send({ message: 'No documents matched the query. Deleted 0 documents.' });
+    }
+  return res.send({ results })
+}
+
 
 async function listUserByEmail(client, req, res) {
   var query = { email: req.body.email, password: req.body.password };
