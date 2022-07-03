@@ -165,7 +165,6 @@ async function deleteFlightById(client, req, res) {
       console.log("No documents matched the query. Deleted 0 documents.");
       return result.send({ message: 'No documents matched the query. Deleted 0 documents.' });
     }
-  return res.send({ results })
 }
 
 
